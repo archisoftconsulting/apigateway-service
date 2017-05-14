@@ -19,7 +19,7 @@ public class ApigatewayController extends Controller {
 
 	@Inject WSClient ws;
 	
-	public Result index() throws InterruptedException, ExecutionException{
+	public Result auth(String action) throws InterruptedException, ExecutionException{
 		
 		/* TODO:
 		 * 1. get user requested location,methods
