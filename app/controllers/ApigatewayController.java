@@ -37,6 +37,13 @@ public class ApigatewayController extends Controller {
 		 * 8. Dispatch the request
 		 */
 		
+		/*
+		 * apigateway - request: POST http://userservice:8080/api/user HTTP/1.1
+		 * userservice - process display saved json detail
+		   apigateway - Response 200
+		 * 
+		 */
+		
 		//Hard code the user request for testing
 		requestedLocation = "https://gturnquist-quoters.cfapps.io/api/random";
 		
@@ -59,7 +66,7 @@ public class ApigatewayController extends Controller {
 		
 		if(found){
 			
-			response += serviceDispatch(requestedMethod, requestedLocation);
+			response += serviceDispatch(requestedMethod, requestedLocation) + "===" + parseRequest();
 		}
 		else
 		{
@@ -92,5 +99,19 @@ public class ApigatewayController extends Controller {
 		}
 		
 		return response;
+	}
+	
+	private String parseRequest(){
+		 // set to "/login" -- The URI path without query parameters.
+	    String path = request().path(); 
+
+	    // set to "/login?param=test" -- The full URI.
+	    String uri = request().uri(); 
+
+	    // set to "example.com:9000" -- The host name from the request, with port (if specified by the client).
+	    String host = request().host(); 
+	    
+	    return "path=" + path +";full url=" + uri +";host=" + host;
+	    
 	}
 }
