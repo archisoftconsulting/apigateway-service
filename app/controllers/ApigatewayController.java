@@ -54,16 +54,24 @@ public class ApigatewayController extends Controller {
 		}
 		
 		if(found){
-			if(requestedMethod.equals("GET")){
+			
+			switch (requestedMethod) {
+			case "GET":
 				CompletionStage<JsonNode> jsonPromise = ws.url(requestedLocation).get()
-				        .thenApply(WSResponse::asJson);
+		        .thenApply(WSResponse::asJson);
 				response += jsonPromise.toCompletableFuture().get().toString();
-			}
-			else if(requestedMethod.equals("POST")){
 				
-			}
-			else if(requestedMethod.equals("DELETE")){
-				
+				break;
+			case "POST":
+				break;
+			case "DELETE":
+				break;
+			case "PATCH":
+				break;
+			case "PUT":
+				break;
+			default:
+				break;
 			}
 			
 		}
