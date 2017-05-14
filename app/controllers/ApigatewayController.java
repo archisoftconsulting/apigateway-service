@@ -84,8 +84,8 @@ public class ApigatewayController extends Controller {
 	
 	private String getRequestLocation()
 	{
-		String requestPath=request().path().toLowerCase().trim();
-		String requestMethod=request().method().toLowerCase().trim();
+		String requestPath=request().path();
+		String requestMethod=request().method();
 		String requestLocation="";
 		
 		List<? extends Config> configList = ConfigFactory.load("endpoints.conf").getConfigList("api.gateway.endpoints");
@@ -97,8 +97,18 @@ public class ApigatewayController extends Controller {
 		{
 			boolean pathExist = false;
 			boolean methodExist = false;
-			pathExist = requestPath.equals(configList.get(i).getString("path").toLowerCase().trim());
-			methodExist = requestMethod.equals(configList.get(i).getString("method").toLowerCase().trim());
+			
+			if(configList.get(i).getString("path").contains("**"))
+			{
+				pathExist = requestPath.contains(configList.get(i).getString("path").replace("**", ""));
+			}
+			else
+			{
+				pathExist = requestPath.equalsIgnoreCase(configList.get(i).getString("path"));
+			}
+			
+			methodExist = requestMethod.equalsIgnoreCase(configList.get(i).getString("method"));
+			
 			
 			if (pathExist && methodExist)
 			{
@@ -107,7 +117,7 @@ public class ApigatewayController extends Controller {
 			}
 			i++;
 		}
-		Logger.info("Request: " + requestMethod.toUpperCase() + " " + requestLocation);
+		Logger.info("Request: " + requestMethod + " " + requestLocation);
 		
 		return requestLocation;
 	}
