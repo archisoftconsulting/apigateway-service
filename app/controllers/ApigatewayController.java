@@ -43,22 +43,24 @@ public class ApigatewayController extends Controller {
 		 * 
 		 */
 		
-		
-		
-		String response="";
+		String result="";
 		String requestLocation=getRequestLocation();
+		//TODO: Health Check. Hardcode always alive
+		boolean isAlive = true;
 		
-		if(Strings.isNullOrEmpty(requestLocation))
+		if(Strings.isNullOrEmpty(requestLocation) || !isAlive)
 		{
-			response = "Access Denied...";
+			result = "Access Denied...";
 		}
 		else
 		{
 			switch (request().method()) {
 			case "GET":
+				//TODO: Circuit Breaker to retry service
 				CompletionStage<JsonNode> jsonPromise = ws.url(requestLocation).get()
 		        .thenApply(WSResponse::asJson);
-				response += jsonPromise.toCompletableFuture().get().toString();
+				
+				result += jsonPromise.toCompletableFuture().get().toString();
 				
 				break;
 			case "POST":
@@ -70,14 +72,14 @@ public class ApigatewayController extends Controller {
 			case "PUT":
 				break;
 			default:
-				response +="unknown endpoint method";
+				result +="unknown endpoint method";
 				break;
 			}
 		
 		}
 		
-		Logger.info("Response " + response);
-		return ok(response);
+		Logger.info("Response: " + result);
+		return ok(result);
 	}
 	
 	private String getRequestLocation()
@@ -105,7 +107,7 @@ public class ApigatewayController extends Controller {
 			}
 			i++;
 		}
-		Logger.info("Request:" + requestMethod + " " + requestLocation);
+		Logger.info("Request: " + requestMethod.toUpperCase() + " " + requestLocation);
 		
 		return requestLocation;
 	}
