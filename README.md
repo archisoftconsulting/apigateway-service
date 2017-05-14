@@ -19,7 +19,9 @@ And then go to
 
 1. http://localhost:9000 to see the running web application.
 2. http://localhost:9000/api/userservice to see the response
-3. Edit the endpoints.conf and goto /api/userservice to see the response
+3. http://localhost:9000/api/greetingservice to see the response
+4. Edit the endpoints.conf and goto /api/userservice and /api/greetingservice to see the response.
+
 
 ## Controllers
 
