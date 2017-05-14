@@ -15,8 +15,8 @@ sbt run
 And then go to 
 
 1. http://localhost:9000 to see the running web application.
-2. http://localhost:9000/api to see the response
-3. Edit the endpoints.conf and goto /api to see the response
+2. http://localhost:9000/api/userservice to see the response
+3. Edit the endpoints.conf and goto /api/userservice to see the response
 
 ## Controllers
 
