@@ -19,7 +19,7 @@ public class ApigatewayController extends Controller {
 
 	@Inject WSClient ws;
 	
-	public Result auth(String action) throws InterruptedException, ExecutionException{
+	public Result auth(String requestedRestService) throws InterruptedException, ExecutionException{
 		
 		/* TODO:
 		 * 1. get user requested location,methods
@@ -34,7 +34,7 @@ public class ApigatewayController extends Controller {
 		
 		String requestedLocation = "https://gturnquist-quoters.cfapps.io/api/random";
 		String requestedMethod = "GET";
-		String response ="apigateway response...";
+		String response ="apigateway response..." + requestedRestService;
 		
 		List<? extends Config> configList = ConfigFactory.load("endpoints.conf").getConfigList("api.gateway.endpoints");
 		int configListSize = configList.size();
