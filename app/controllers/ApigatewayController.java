@@ -17,6 +17,8 @@ import play.mvc.Result;
 
 public class ApigatewayController extends Controller {
 
+	
+	 
 	@Inject WSClient ws;
 	
 	public Result auth(String requestedLocation) throws InterruptedException, ExecutionException{
@@ -35,7 +37,7 @@ public class ApigatewayController extends Controller {
 		requestedLocation = "https://gturnquist-quoters.cfapps.io/api/random";
 		
 		String requestedMethod = "GET";
-		String response ="apigateway response..." + requestedLocation;
+		String response ="apigateway response...";
 		
 		List<? extends Config> configList = ConfigFactory.load("endpoints.conf").getConfigList("api.gateway.endpoints");
 		int configListSize = configList.size();
