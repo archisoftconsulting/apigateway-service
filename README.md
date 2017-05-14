@@ -50,6 +50,5 @@ There are several demonstration files available in this template.
 sbt docker:publishLocal
 docker run -d -p 9000:9000 apigateway-service:1.0-SNAPSHOT
 docker start apigateway-service:1.0-SNAPSHOT
-browse http://localhost:9000 and http://localhost:9000/api
 ```
 
