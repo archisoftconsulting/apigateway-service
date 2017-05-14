@@ -12,7 +12,11 @@ Run this using [sbt](http://www.scala-sbt.org/).  If you downloaded this project
 sbt run
 ```
 
-And then go to http://localhost:9000 to see the running web application.
+And then go to 
+
+1. http://localhost:9000 to see the running web application.
+2. http://localhost:9000/api to see the response
+3. Edit the endpoints.conf and goto /api to see the response
 
 ## Controllers
 
