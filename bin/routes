@@ -3,6 +3,14 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           		controllers.HomeController.index
+GET     /                           	controllers.HomeController.index
+# List of all the api
+GET		/api							controllers.HomeController.index
+GET		/api/							controllers.HomeController.index
 
-GET		/api/*requestedLocation				controllers.ApigatewayController.auth(requestedLocation)
+# CRUD api
+GET		/api/*service					controllers.ApigatewayController.auth(service)
+POST	/api/*service					controllers.ApigatewayController.auth(service)
+DELETE	/api/*service					controllers.ApigatewayController.auth(service)
+PUT		/api/*service					controllers.ApigatewayController.auth(service)
+PATCH	/api/*service					controllers.ApigatewayController.auth(service)
