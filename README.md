@@ -40,4 +40,8 @@ There are several demonstration files available in this template.
  * 6. process the request according to location and methods.
  */
 
+## Dockerize the application
+```
+sbt docker:publishLocal
+```
 
