@@ -21,30 +21,7 @@ public class ApigatewayController extends Controller {
 	 
 	@Inject WSClient ws;
 	
-	private String serviceDispatch(String requestedMethod,String requestedLocation) throws InterruptedException, ExecutionException{
-		String response="";
-		
-		switch (requestedMethod) {
-		case "GET":
-			CompletionStage<JsonNode> jsonPromise = ws.url(requestedLocation).get()
-	        .thenApply(WSResponse::asJson);
-			response += jsonPromise.toCompletableFuture().get().toString();
-			break;
-		case "POST":
-			break;
-		case "DELETE":
-			break;
-		case "PATCH":
-			break;
-		case "PUT":
-			break;
-		default:
-			response +="unknown endpoint method";
-			break;
-		}
-		
-		return response;
-	}
+	
 	
 	public Result auth(String requestedLocation) throws InterruptedException, ExecutionException{
 		
@@ -90,5 +67,30 @@ public class ApigatewayController extends Controller {
 		}
 		
 		return ok(response);
+	}
+	
+	private String serviceDispatch(String requestedMethod,String requestedLocation) throws InterruptedException, ExecutionException{
+		String response="";
+		
+		switch (requestedMethod) {
+		case "GET":
+			CompletionStage<JsonNode> jsonPromise = ws.url(requestedLocation).get()
+	        .thenApply(WSResponse::asJson);
+			response += jsonPromise.toCompletableFuture().get().toString();
+			break;
+		case "POST":
+			break;
+		case "DELETE":
+			break;
+		case "PATCH":
+			break;
+		case "PUT":
+			break;
+		default:
+			response +="unknown endpoint method";
+			break;
+		}
+		
+		return response;
 	}
 }
