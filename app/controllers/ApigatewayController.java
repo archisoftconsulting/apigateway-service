@@ -21,6 +21,31 @@ public class ApigatewayController extends Controller {
 	 
 	@Inject WSClient ws;
 	
+	private String serviceDispatch(String requestedMethod,String requestedLocation) throws InterruptedException, ExecutionException{
+		String response="";
+		
+		switch (requestedMethod) {
+		case "GET":
+			CompletionStage<JsonNode> jsonPromise = ws.url(requestedLocation).get()
+	        .thenApply(WSResponse::asJson);
+			response += jsonPromise.toCompletableFuture().get().toString();
+			break;
+		case "POST":
+			break;
+		case "DELETE":
+			break;
+		case "PATCH":
+			break;
+		case "PUT":
+			break;
+		default:
+			response +="unknown endpoint method";
+			break;
+		}
+		
+		return response;
+	}
+	
 	public Result auth(String requestedLocation) throws InterruptedException, ExecutionException{
 		
 		/* TODO:
@@ -45,35 +70,19 @@ public class ApigatewayController extends Controller {
 		int configListSize = configList.size();
 
 		boolean found=false;
-		for (int i =0;i<configListSize;i++)
+		int i=0;
+		while(!found && i<configListSize)
 		{
 			if (requestedLocation.toLowerCase().trim().equals(configList.get(i).getString("location").toLowerCase().trim()))
 			{
 				found=true;
 			}
+			i++;
 		}
 		
 		if(found){
 			
-			switch (requestedMethod) {
-			case "GET":
-				CompletionStage<JsonNode> jsonPromise = ws.url(requestedLocation).get()
-		        .thenApply(WSResponse::asJson);
-				response += jsonPromise.toCompletableFuture().get().toString();
-				
-				break;
-			case "POST":
-				break;
-			case "DELETE":
-				break;
-			case "PATCH":
-				break;
-			case "PUT":
-				break;
-			default:
-				break;
-			}
-			
+			response += serviceDispatch(requestedMethod, requestedLocation);
 		}
 		else
 		{

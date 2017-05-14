@@ -3,6 +3,6 @@
 # ~~~~
 
 # An example controller showing a sample home page
-GET     /                           controllers.HomeController.index
+GET     /                           		controllers.HomeController.index
 
 GET		/api/*requestedLocation				controllers.ApigatewayController.auth(requestedLocation)
