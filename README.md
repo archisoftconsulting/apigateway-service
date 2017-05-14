@@ -27,13 +27,13 @@ There are several demonstration files available in this template.
   Receive user request and do the following:
   
   /* TODO:
-		 * 1. get user requested location,methods
-		 * 2. Check if user requested URL location and methods exist in endpoint.conf file(permission control)
-		 * C,R,U,D = POST,GET,PUT/PATCH,DELETE
-		 * 3. oAuth authentication check
-		 * 4. blacklist check
-		 * 5. rate limiting check
-		 * 6. process the request according to location and methods.
-		 */
+ * 1. get user requested location,methods
+ * 2. Check if user requested URL location and methods exist in endpoint.conf file(permission control)
+ * C,R,U,D = POST,GET,PUT/PATCH,DELETE
+ * 3. oAuth authentication check
+ * 4. blacklist check
+ * 5. rate limiting check
+ * 6. process the request according to location and methods.
+ */
 
 
