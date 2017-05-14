@@ -31,6 +31,8 @@ public class ApigatewayController extends Controller {
 		 * 4. blacklist check
 		 * 5. rate limiting check
 		 * 6. process the request according to location and methods.
+		 * 7. Circuit breaker check
+		 * 8. Dispatch the request
 		 */
 		
 		//Hard code the user request for testing
