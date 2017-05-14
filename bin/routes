@@ -5,4 +5,4 @@
 # An example controller showing a sample home page
 GET     /                           controllers.HomeController.index
 
-GET		/api/*requestedRestService				controllers.ApigatewayController.auth(requestedRestService)
+GET		/api/*requestedLocation				controllers.ApigatewayController.auth(requestedLocation)
