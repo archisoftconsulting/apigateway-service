@@ -43,5 +43,6 @@ There are several demonstration files available in this template.
 ## Dockerize the application
 ```
 sbt docker:publishLocal
+docker start <imageID>
 ```
 
