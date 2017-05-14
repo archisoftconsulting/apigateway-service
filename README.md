@@ -1,6 +1,6 @@
 [<img src="https://img.shields.io/travis/playframework/play-java-starter-example.svg"/>](https://travis-ci.org/playframework/play-java-starter-example)
 
-# Play Java Starter
+# apigateway microservice Starter
 
 This is a starter application that shows how Play works.  Please see the documentation at https://www.playframework.com/documentation/latest/Home for more details.
 
@@ -22,36 +22,18 @@ There are several demonstration files available in this template.
 
   Shows how to handle simple HTTP requests.
 
-- AsyncController.java:
+- ApigatewayController.java
 
-  Shows how to do asynchronous programming when handling a request.
+  Receive user request and do the following:
+  
+  /* TODO:
+		 * 1. get user requested location,methods
+		 * 2. Check if user requested URL location and methods exist in endpoint.conf file(permission control)
+		 * C,R,U,D = POST,GET,PUT/PATCH,DELETE
+		 * 3. oAuth authentication check
+		 * 4. blacklist check
+		 * 5. rate limiting check
+		 * 6. process the request according to location and methods.
+		 */
 
-- CountController.java:
 
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
-
-## Components
-
-- Module.java:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- Counter.java:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- ApplicationTimer.java:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-## Filters
-
-- Filters.java:
-
-  Creates the list of HTTP filters used by your application.
-
-- ExampleFilter.java
-
-  A simple filter that adds a header to every response.
