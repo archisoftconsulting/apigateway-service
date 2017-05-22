@@ -51,4 +51,5 @@ sbt docker:publishLocal
 docker run -d -p 9000:9000 apigateway-service:1.0-SNAPSHOT
 docker start apigateway-service:1.0-SNAPSHOT
 ```
+You are required to add sudo infront of all command if you have permission issue
 
