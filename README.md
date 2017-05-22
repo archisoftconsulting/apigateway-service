@@ -5,15 +5,22 @@
 This is a starter application for apigateway. The purpose of the API gateway is to handle external traffic.
 Services should communicate directly without a gateway/ESB-style mediator.
 
+## Download the project
+gitclone this project or download the zip file https://github.com/archisoftconsulting/apigateway-service/archive/master.zip
+Extract into any folder
+Open Terminal command
+cd apigateway-service
+
 ## Running
 
 Run this using [sbt](http://www.scala-sbt.org/):
 
+
 ```
-sbt run
+./sbt run
 ```
 
-And then go to 
+Once the application is up, go to 
 
 1. http://localhost:9000 to see the running web application.
 2. http://localhost:9000/api/userservice to see the response
